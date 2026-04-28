@@ -6,20 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Entity
 @Data
-@Table(name = "games")
+@Table(name = "categories")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Game {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String category;
-    private String platform;
-    private LocalDate releaseDate;
+    private String description;
 }
