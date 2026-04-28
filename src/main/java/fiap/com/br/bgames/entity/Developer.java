@@ -23,6 +23,6 @@ public class Developer {
     private LocalDate foundedDate;
     private Boolean active;
 
-    @OneToMany // Uma Developer pode ter mutos games
+    @OneToMany(mappedBy = "developer")
     private List<Game> games;
 }

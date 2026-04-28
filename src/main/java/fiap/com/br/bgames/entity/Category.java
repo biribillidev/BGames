@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "categories")
@@ -18,7 +20,8 @@ public class Category {
     private long id;
     private String name;
     private String description;
+    private Boolean active;
 
-    @ManyToOne // Muitas Categories podem estar contida em um Game
-    private Game game;
+    @ManyToMany(mappedBy = "categories")
+    private List<Game> games;
 }

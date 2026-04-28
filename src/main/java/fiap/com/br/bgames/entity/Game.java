@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,9 +23,15 @@ public class Game {
     private String platform;
     private LocalDate releaseDate;
 
-    @ManyToOne // muitos Games podem pertencer a uma Developer
+    @ManyToOne
+    @JoinColumn(name = "developer_id")
     private Developer developer;
 
-    @OneToMany // um Game pode ter muitas categorias
-    private Category category;
+    @ManyToMany
+    @JoinTable(
+            name = "game_category",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories;
 }
