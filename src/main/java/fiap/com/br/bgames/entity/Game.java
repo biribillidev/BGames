@@ -19,7 +19,12 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String category;
     private String platform;
     private LocalDate releaseDate;
+
+    @ManyToOne // muitos Games podem pertencer a uma Developer
+    private Developer developer;
+
+    @OneToMany // um Game pode ter muitas categorias
+    private Category category;
 }

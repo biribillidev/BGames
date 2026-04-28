@@ -18,4 +18,7 @@ public class Category {
     private long id;
     private String name;
     private String description;
+
+    @ManyToOne // Muitas Categories podem estar contida em um Game
+    private Game game;
 }

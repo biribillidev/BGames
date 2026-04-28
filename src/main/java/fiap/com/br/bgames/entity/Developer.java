@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,4 +23,6 @@ public class Developer {
     private LocalDate foundedDate;
     private Boolean active;
 
+    @OneToMany // Uma Developer pode ter mutos games
+    private List<Game> games;
 }
