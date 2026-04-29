@@ -1,5 +1,6 @@
 package fiap.com.br.bgames.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,11 +19,12 @@ import java.util.List;
 public class Developer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
     private LocalDate foundedDate;
     private Boolean active;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "developer")
     private List<Game> games;
 }

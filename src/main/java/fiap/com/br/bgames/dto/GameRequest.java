@@ -3,8 +3,10 @@ package fiap.com.br.bgames.dto;
 import fiap.com.br.bgames.entity.Category;
 import fiap.com.br.bgames.entity.Developer;
 import fiap.com.br.bgames.entity.Game;
+import fiap.com.br.bgames.validation.ValidPlatform;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -16,9 +18,11 @@ public record GameRequest(
         @Size(min = 2, max = 100)
         String name,
 
+        @ValidPlatform
         @NotBlank(message = "A plataforma é obrigatória")
         String platform,
 
+        @PastOrPresent
         @NotNull(message = "A data de lançamento é obrigatória")
         LocalDate releaseDate,
 

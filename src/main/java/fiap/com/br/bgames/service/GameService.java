@@ -2,6 +2,7 @@ package fiap.com.br.bgames.service;
 
 import fiap.com.br.bgames.entity.Game;
 import fiap.com.br.bgames.repository.GameRepository;
+import fiap.com.br.bgames.summary.GameSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,6 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -44,5 +48,29 @@ public class GameService {
         return gameRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game com id " + id + " não encontrada")
         );
+    }
+
+    public List<Game> searchByName(String name) {
+        return gameRepository.findByNameContainingIgnoreCase(name);
+    }
+
+    public List<Game> findByPlatform(String platform) {
+        return gameRepository.findByPlatformContainingIgnoreCase(platform);
+    }
+
+    public List<Game> findByDeveloperName(String developerName) {
+        return gameRepository.findByDeveloperNameContainingIgnoreCase(developerName);
+    }
+
+    public List<Game> findByCategoryName(String categoryName) {
+        return gameRepository.findByCategoriesNameContainingIgnoreCase(categoryName);
+    }
+
+    public List<Game> findReleasedAfter(LocalDate date) {
+        return gameRepository.findByReleaseDateAfter(date);
+    }
+
+    public List<GameSummary> searchSummaryByName(String name) {
+        return gameRepository.findSummaryByNameContainingIgnoreCase(name);
     }
 }

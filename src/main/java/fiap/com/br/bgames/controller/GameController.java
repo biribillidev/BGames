@@ -7,6 +7,7 @@ import fiap.com.br.bgames.repository.GameRepository;
 import fiap.com.br.bgames.service.DeveloperService;
 import fiap.com.br.bgames.service.GameService;
 import fiap.com.br.bgames.summary.DeveloperSummary;
+import fiap.com.br.bgames.summary.GameSummary;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -56,5 +58,35 @@ public class GameController {
     public ResponseEntity<Game> updateGame(@PathVariable Long id, @RequestBody Game game){
         log.info("Atualizando Game com id {} com os dados {}", id, game);
         return ResponseEntity.ok( gameService.updateGame(id, game) );
+    }
+
+    @GetMapping("search")
+    public List<Game> searchByName(@RequestParam String name) {
+        return gameService.searchByName(name);
+    }
+
+    @GetMapping("by-platform")
+    public List<Game> findByPlatform(@RequestParam String platform) {
+        return gameService.findByPlatform(platform);
+    }
+
+    @GetMapping("by-developer")
+    public List<Game> findByDeveloperName(@RequestParam String name) {
+        return gameService.findByDeveloperName(name);
+    }
+
+    @GetMapping("by-category")
+    public List<Game> findByCategoryName(@RequestParam String name) {
+        return gameService.findByCategoryName(name);
+    }
+
+    @GetMapping("released-after")
+    public List<Game> findReleasedAfter(@RequestParam LocalDate date) {
+        return gameService.findReleasedAfter(date);
+    }
+
+    @GetMapping("summary")
+    public List<GameSummary> getSummary(@RequestParam String name) {
+        return gameService.searchSummaryByName(name);
     }
 }

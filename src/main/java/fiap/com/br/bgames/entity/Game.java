@@ -1,5 +1,6 @@
 package fiap.com.br.bgames.entity;
 
+import fiap.com.br.bgames.validation.ValidPlatform;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,8 +19,9 @@ import java.util.List;
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
+    @ValidPlatform
     private String platform;
     private LocalDate releaseDate;
 
