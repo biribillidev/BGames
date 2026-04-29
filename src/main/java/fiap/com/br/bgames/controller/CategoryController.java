@@ -58,6 +58,6 @@ public class CategoryController {
 
     @GetMapping("search")
     public List<CategorySummary> seachByTitle(@RequestParam String name) {
-        return categoryRepository.findByTitleContainingIgnoreCase(name);
+        return categoryRepository.findByNameContainingIgnoreCase(name);
     }
 }

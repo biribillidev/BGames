@@ -57,6 +57,6 @@ public class DeveloperController {
 
     @GetMapping("search")
     public List<DeveloperSummary> seachByTitle(@RequestParam String name) {
-        return developerRepository.findByTitleContainingIgnoreCase(name);
+        return developerRepository.findByNameContainingIgnoreCase(name);
     }
 }
