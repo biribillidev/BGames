@@ -12,5 +12,5 @@ import java.util.List;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    List<CategorySummary> findByTitleContainingIgnoreCase(String title);
+    List<CategorySummary> findByTitleContainingIgnoreCase(String name);
 }

@@ -13,5 +13,5 @@ import java.util.List;
 @Repository
 public interface DeveloperRepository extends JpaRepository<Developer, Long> {
 
-    List<DeveloperSummary> findByTitleContainingIgnoreCase(String title);
+    List<DeveloperSummary> findByTitleContainingIgnoreCase(String name);
 }
