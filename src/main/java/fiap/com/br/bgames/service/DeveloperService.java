@@ -1,51 +1,47 @@
 package fiap.com.br.bgames.service;
 
-import fiap.com.br.bgames.dto.DeveloperRequest;
-import fiap.com.br.bgames.dto.DeveloperResponse;
 import fiap.com.br.bgames.entity.Developer;
 import fiap.com.br.bgames.repository.DeveloperRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
 public class DeveloperService {
+    @Autowired
+    private DeveloperRepository developerRepository;
 
-    private final DeveloperRepository repository;
-
-    public DeveloperResponse create(DeveloperRequest request) {
-        Developer developer = request.toEntity();
-        return DeveloperResponse.fromEntity(repository.save(developer));
+    public Developer addDeveloper(Developer developer){
+        return developerRepository.save(developer);
     }
 
-    public List<DeveloperResponse> findAll() {
-        return repository.findAll()
-                .stream()
-                .map(DeveloperResponse::fromEntity)
-                .toList();
+    public Page<Developer> getAllDeveloper(Pageable pageable) {
+        return developerRepository.findAll(pageable);
     }
 
-    public DeveloperResponse findById(Long id) {
-        Developer developer = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Desenvolvedora não encontrada"));
-
-        return DeveloperResponse.fromEntity(developer);
+    public Developer getDeveloperById(Long id){
+        return findDeveloperById(id);
     }
 
-    public DeveloperResponse update(Long id, DeveloperRequest request) {
-        Developer developer = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Desenvolvedora não encontrada"));
-
-        developer.setName(request.name());
-        developer.setFoundedDate(request.foundedDate());
-        developer.setActive(request.active());
-
-        return DeveloperResponse.fromEntity(repository.save(developer));
+    public void deleteDeveloper(Long id) {
+        findDeveloperById(id);
+        developerRepository.deleteById(id);
     }
 
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public Developer updateDeveloper(Long id, Developer newDeveloper) {
+        findDeveloperById(id);
+        newDeveloper.setId(id);
+        return developerRepository.save(newDeveloper);
+    }
+
+    private Developer findDeveloperById(Long id) {
+        return developerRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Developer com id " + id + " não encontrada")
+        );
     }
 }

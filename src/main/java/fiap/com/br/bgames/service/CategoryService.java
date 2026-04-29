@@ -1,51 +1,48 @@
 package fiap.com.br.bgames.service;
 
-import fiap.com.br.bgames.dto.CategoryRequest;
-import fiap.com.br.bgames.dto.CategoryResponse;
 import fiap.com.br.bgames.entity.Category;
 import fiap.com.br.bgames.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
 public class CategoryService {
 
-    private final CategoryRepository repository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    public CategoryResponse create(CategoryRequest request) {
-        Category category = request.toEntity();
-        return CategoryResponse.fromEntity(repository.save(category));
+    public Category addCategory(Category category){
+        return categoryRepository.save(category);
     }
 
-    public List<CategoryResponse> findAll() {
-        return repository.findAll()
-                .stream()
-                .map(CategoryResponse::fromEntity)
-                .toList();
+    public Page<Category> getAllCategories(Pageable pageable) {
+        return categoryRepository.findAll(pageable);
     }
 
-    public CategoryResponse findById(Long id) {
-        Category category = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
-
-        return CategoryResponse.fromEntity(category);
+    public Category getCategoryById(Long id){
+        return findCategoryById(id);
     }
 
-    public CategoryResponse update(Long id, CategoryRequest request) {
-        Category category = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
-
-        category.setName(request.name());
-        category.setDescription(request.description());
-        category.setActive(request.active());
-
-        return CategoryResponse.fromEntity(repository.save(category));
+    public void deleteCategory(Long id) {
+        findCategoryById(id);
+        categoryRepository.deleteById(id);
     }
 
-    public void delete(Long id) {
-        repository.deleteById(id);
+    public Category updateCategory(Long id, Category newCategory) {
+        findCategoryById(id);
+        newCategory.setId(id);
+        return categoryRepository.save(newCategory);
+    }
+
+    private Category findCategoryById(Long id) {
+        return categoryRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria com id " + id + " não encontrada")
+        );
     }
 }
