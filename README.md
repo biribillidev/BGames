@@ -16,7 +16,8 @@ João Vitor Biribilli Ravelli - RM565594 - 2TDSPG
 - H2 Database (em memória)  
 - Maven  
 - Lombok  
-- Bean Validation  
+- Bean Validation
+- Insomnia
 
 ---
 
