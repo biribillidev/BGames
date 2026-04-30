@@ -1,0 +1,668 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: BGames
+meta:
+  id: wrk_30b5396dea994bc0ba9f378251ffc5ef
+  created: 1777498206074
+  modified: 1777498206074
+  description: ""
+collection:
+  - name: Game
+    meta:
+      id: fld_c84c48bcc7004760a7b47c4cff7b6b5d
+      created: 1777507097441
+      modified: 1777507367676
+      sortKey: -1777499109597
+      description: ""
+    children:
+      - url: http://localhost:8080/games
+        name: Get Games
+        meta:
+          id: req_fb438bae8f5f46119f983e5dce2e9b02
+          created: 1777498247168
+          modified: 1777507106148
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106123
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games
+        name: Post Games
+        meta:
+          id: req_c7d89838d5de43a5a30b7efb5ff4c0b8
+          created: 1777498353954
+          modified: 1777507130415
+          isPrivate: false
+          description: ""
+          sortKey: -1777507107123
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Dead by Daylight",
+              "platform": "PC",
+              "releaseDate": "2016-06-14",
+              "developer": { "id": 1 },
+              "categories": [
+                { "id": 1 }
+              ]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/1
+        name: Get Game by Id
+        meta:
+          id: req_5978c5791d2241ce981c003af0959441
+          created: 1777498526311
+          modified: 1777507109245
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106223
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/search?name=daylight
+        name: Get Game by Name
+        meta:
+          id: req_43549c742e9d427c91ebd25d3a6abb38
+          created: 1777498672100
+          modified: 1777507112178
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106323
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/by-platform?platform=pc
+        name: Get Game by Platform
+        meta:
+          id: req_28483bee946c4ecba331934d078bb415
+          created: 1777498752029
+          modified: 1777507114025
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106423
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/by-developer?name=behaviour
+        name: Get Game by Developer
+        meta:
+          id: req_0930a149c1254640b57d54516e47027d
+          created: 1777498776121
+          modified: 1777507115533
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106523
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/by-category?name=horror
+        name: Get Game by Category
+        meta:
+          id: req_f3c64642943141fea9f743621b1b52af
+          created: 1777498793064
+          modified: 1777507117160
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106623
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/released-after?date=2015-01-01
+        name: Get Game by ReleaseDate
+        meta:
+          id: req_c7d66476688245f9a7b2778b36a7b596
+          created: 1777498840297
+          modified: 1777507120129
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106823
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/1
+        name: Put Game
+        meta:
+          id: req_8d323044bfb44398a636d1f2549adc26
+          created: 1777498868066
+          modified: 1777507129166
+          isPrivate: false
+          description: ""
+          sortKey: -1777507107023
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Dead by Daylight",
+              "platform": "Xbox",
+              "releaseDate": "2016-06-14",
+              "developer": {
+                "id": 1
+              },
+              "categories": [
+                { "id": 1 }
+              ]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/1
+        name: Delete Game
+        meta:
+          id: req_c9e9191470134e76a1769139ca205bcd
+          created: 1777498885432
+          modified: 1777507127856
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106923
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/games/summary?name=dead
+        name: Get Game Summary
+        meta:
+          id: req_279b29e3166849fb9d6a34696d69bcc0
+          created: 1777502170939
+          modified: 1777507118698
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106723
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: GET http://localhost:8080/games?page=0&size=5
+        name: Get Game Pagination
+        meta:
+          id: req_7a89b262e1e44eb7b775d8b09281af6f
+          created: 1777507234035
+          modified: 1777507255096
+          isPrivate: false
+          description: ""
+          sortKey: -1777507106873
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Category
+    meta:
+      id: fld_abf9f3e54e5a4e1f91722d8da64fdc5b
+      created: 1777507141297
+      modified: 1777507193250
+      sortKey: -1777507141297
+      description: ""
+    children:
+      - url: http://localhost:8080/categories
+        name: Get Categories
+        meta:
+          id: req_e773e581bcba43f69dfa9de3a8549359
+          created: 1777499333762
+          modified: 1777507173557
+          isPrivate: false
+          description: ""
+          sortKey: -1777507156745
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/categories/1
+        name: Get Categories by Id
+        meta:
+          id: req_b55ff7438d9e4fb79a9ec5e848126630
+          created: 1777499353963
+          modified: 1777507156866
+          isPrivate: false
+          description: ""
+          sortKey: -1777507156845
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/categories/search?name=horror
+        name: Get Category by Name
+        meta:
+          id: req_ba0bdb9cc13e4fd5be2a951a5dd5ea35
+          created: 1777499381156
+          modified: 1777507177233
+          isPrivate: false
+          description: ""
+          sortKey: -1777507156945
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/categories
+        name: Post Category
+        meta:
+          id: req_c0358612dfad4e3d9ae5a919e9770cca
+          created: 1777499398972
+          modified: 1777507186446
+          isPrivate: false
+          description: ""
+          sortKey: -1777507157245
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Horror",
+              "description": "Jogos de terror com atmosfera tensa",
+              "active": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/categories/1
+        name: Put Category
+        meta:
+          id: req_791c1c6258b04820a71478dabede5fb6
+          created: 1777499419953
+          modified: 1777507185172
+          isPrivate: false
+          description: ""
+          sortKey: -1777507157145
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Horror",
+              "description": "Jogos de terror com atmosfera tensa e medonha",
+              "active": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/categories/1
+        name: Delete Category
+        meta:
+          id: req_0cfb1518783c4a828823419f110a0ce2
+          created: 1777499467949
+          modified: 1777507183888
+          isPrivate: false
+          description: ""
+          sortKey: -1777507157045
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Developer
+    meta:
+      id: fld_8d30a5dafba24bf594623f2ac36eed7a
+      created: 1777507198388
+      modified: 1777507198388
+      sortKey: -1777507198388
+      description: ""
+    children:
+      - url: http://localhost:8080/developers
+        name: Get Developers
+        meta:
+          id: req_b77ecca4fca14d3d9d1539496e40d275
+          created: 1777499720765
+          modified: 1777507205583
+          isPrivate: false
+          description: ""
+          sortKey: -1777507205561
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/developers/1
+        name: Get Developers by Id
+        meta:
+          id: req_06b9519f4aa1412f8656b7dc4980ebab
+          created: 1777499754897
+          modified: 1777507207456
+          isPrivate: false
+          description: ""
+          sortKey: -1777507205661
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/developers/search?name=behaviour
+        name: Get Developer by Name
+        meta:
+          id: req_665ef3d42bc0457a95bc33a26ff159c9
+          created: 1777499773200
+          modified: 1777507208898
+          isPrivate: false
+          description: ""
+          sortKey: -1777507205761
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/developers
+        name: Post Developer
+        meta:
+          id: req_e704468c2c4d4814bd196cfba88bc007
+          created: 1777499787940
+          modified: 1777507210138
+          isPrivate: false
+          description: ""
+          sortKey: -1777507205861
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Behaviour Interactive",
+              "foundedDate": "1992-01-01",
+              "active": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/developers/1
+        name: Put Developer
+        meta:
+          id: req_1c128829edac4b5fbcbfb9c896692703
+          created: 1777499804472
+          modified: 1777507211380
+          isPrivate: false
+          description: ""
+          sortKey: -1777507205961
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Behaviour Interactives",
+              "foundedDate": "1992-01-01",
+              "active": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:8080/developers/1
+        name: Delete Developer
+        meta:
+          id: req_1e81b897e1954b86a5ba32d1e103b4af
+          created: 1777499820042
+          modified: 1777507212857
+          isPrivate: false
+          description: ""
+          sortKey: -1777507206061
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_948d82ec3ecc75665e76205ef792c92336834e5b
+    created: 1777498206077
+    modified: 1777498206077
+environments:
+  name: Base Environment
+  meta:
+    id: env_948d82ec3ecc75665e76205ef792c92336834e5b
+    created: 1777498206076
+    modified: 1777498206076
+    isPrivate: false
