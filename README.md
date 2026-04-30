@@ -104,7 +104,8 @@ src/main/java/fiap/com/br/bgames
 | /games/by-category?name= |
 | /games/released-after?date= |
 | /games/summary?name= |
-
+| /games?page=0&size=5 |
+| /games?page=0&size=5&sort=name,asc |
 ---
 
 ### 🏢 Developers
